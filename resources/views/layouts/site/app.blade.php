@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} -  @yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="VetCarePro" name="keywords">
     <meta content="VetCarePro" name="description">
@@ -84,21 +84,38 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">Sobre</a>
-                <a href="service.html" class="nav-item nav-link">Serviços</a>
-                <a href="product.html" class="nav-item nav-link">Productos</a>
+                <a href="/" class="nav-item nav-link {{request()->route()->getName() == 'inicio' ? 'active' : ''}}">Home</a>
+                <a href="{{route('about-us')}}" class="nav-item nav-link {{request()->route()->getName() == 'about-us' ? 'active' : ''}}">Sobre</a>
+                <a href="{{route('services')}}" class="nav-item nav-link {{request()->route()->getName() == 'services' ? 'active' : ''}}">Serviços</a>
+                <a href="{{route('products')}}" class="nav-item nav-link {{request()->route()->getName() == 'products' ? 'active' : ''}}">Produtos</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Minha Conta</a>
                     <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="team.html" class="dropdown-item">The Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                        <!-- Links de Auntenticação -->
+                        @guest
+                            @if (Route::has('login'))
+                                <a href="{{route('login')}}" class="dropdown-item">Login</a>
+                            @endif
+                            @if (Route::has('register'))
+                                <a href="{{route('register')}}" class="dropdown-item">Criar Conta</a>
+                            @endif
+                        @else
+                            <a href="#" class="dropdown-item"> {{ Auth::user()->name }}</a>
+                            <hr>
+                            <!-- Terminar Sessao -->
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Terminar Sessão') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endguest
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contactos <i class="bi bi-arrow-right"></i></a>
+                <a href="{{route('contact-us')}}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contactos <i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
     </nav>
@@ -121,21 +138,19 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Links Rápidos</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Conheça a Equipa</a>
-                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
+                        <a class="text-body mb-2" href="{{route('inicio')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="{{route('about-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
+                        <a class="text-body mb-2" href="{{route('services')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
+                        <a class="text-body" href="{{route('contact-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Popular Links</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Conheça a Equipa</a>
-                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
+                        <a class="text-body mb-2" href="{{route('inicio')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="{{route('about-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
+                        <a class="text-body mb-2" href="{{route('services')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
+                        <a class="text-body" href="{{route('contact-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
