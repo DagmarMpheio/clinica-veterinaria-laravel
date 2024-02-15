@@ -41,4 +41,13 @@ Route::get('/contact-us', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+										/* rotas dashboard*/
+Route::get('/dashboard', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
+Route::get('/perfil', [App\Http\Controllers\Backend\HomeController::class, 'show'])->name('perfil');
+
+//grupo de rotas -> users
+Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+    Route::resource('users', App\Http\Controllers\Backend\UserController::class);
+    //rota para o metodo confirm
+    Route::get('users/confirm/{users}', [App\Http\Controllers\Backend\UserController::class, 'confirm'])->name('users.confirm');
+});

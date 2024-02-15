@@ -1,4 +1,8 @@
-@extends('layouts.site.app')
+@extends('layouts.backend.main')
+
+@section('title')
+Dashboard
+@endsection
 
 @section('content')
 <div class="container">

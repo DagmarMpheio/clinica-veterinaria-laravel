@@ -101,6 +101,7 @@
                             @endif
                         @else
                             <a href="#" class="dropdown-item"> {{ Auth::user()->name }}</a>
+                            <a href="{{route('dashboard')}}" class="dropdown-item"> Dashboard</a>
                             <hr>
                             <!-- Terminar Sessao -->
                             <a class="dropdown-item" href="{{ route('logout') }}"
