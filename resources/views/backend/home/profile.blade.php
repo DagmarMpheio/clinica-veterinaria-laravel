@@ -37,11 +37,11 @@
                         <div class="text-muted mb-2">{{ $user->roles->first()->display_name }}</div>
 
                         <div>
-                            <a class="btn btn-primary-yellow btn-sm" href="{{ route('editar-perfil') }}">
+                            <a class="btn btn-primary-green btn-sm" href="{{ route('editar-perfil') }}">
                                 <span data-feather="edit"></span>
                                 Editar
                             </a>
-                            <a class="btn btn-dark text-yellow1 btn-sm" href="#">
+                            <a class="btn btn-dark text-green1 btn-sm" href="#">
                                 <span data-feather="trash"></span>
                                 Excluir
                             </a>

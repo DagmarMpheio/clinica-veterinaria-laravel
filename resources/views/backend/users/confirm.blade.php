@@ -9,7 +9,7 @@
 
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Confirmação de Eliminação</h1>
-            <a class="badge btn btn-primary-yellow text-white ms-2 p-2" href="{{ route('backend.users.index') }}"
+            <a class="badge btn btn-primary-green text-white ms-2 p-2" href="{{ route('backend.users.index') }}"
                 title="Voltar">
                 <i class="align-middle" data-feather="arrow-left"></i> <span class="align-middle"> Voltar</span>
             </a>
@@ -59,12 +59,12 @@
                                     </div>
 
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-dark text-yellow1"><i class="fa fa-check"></i>
+                                        <button type="submit" class="btn btn-dark text-green1"><i class="fa fa-check"></i>
                                             <i class="align-middle" data-feather="trash"></i> <span class="align-middle">
                                                 Confirmar Exclusão</span>
                                         </button>
                                         <a href="{{ route('backend.users.index') }}"
-                                            class="btn btn-primary-yellow text-white">
+                                            class="btn btn-primary-green text-white">
                                             <i class="align-middle" data-feather="slash"></i> <span class="align-middle">
                                                 Cancelar</span>
                                         </a>

@@ -9,7 +9,7 @@
 
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Todos Usuários</h1>
-            <a class="badge bg-dark text-yellow1 ms-2 p-2" href="{{ route('backend.users.create') }}" title="Novo Usuário">
+            <a class="badge bg-dark text-white ms-2 p-2" href="{{ route('backend.users.create') }}" title="Novo Usuário">
                 <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle"> Novo Usuário</span>
             </a>
         </div>
@@ -27,9 +27,7 @@
                                 <th>#</th>
                                 <th>Nome</th>
                                 <th class="d-none d-xl-table-cell">Email</th>
-                                <th class="d-none d-xl-table-cell">Cargo</th>
                                 <th class="d-none d-xl-table-cell">Telefone</th>
-                                <th class="d-none d-xl-table-cell">Endereço</th>
                                 <th colspan="2">Acções</th>
                             </tr>
                         </thead>
@@ -43,12 +41,10 @@
                                     <td>{{ $counter++ }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td class="d-none d-xl-table-cell">{{ $user->email }}</td>
-                                    <td class="d-none d-xl-table-cell">{{ $cargoUser = $user->roles->first() ? $user->roles->first()->display_name : 'Cargo Não Definido' }}</td>
-                                    <td class="d-none d-xl-table-cell">{{ $user->telefone }}</td>
-                                    <td class="d-none d-xl-table-cell">{{ $user->endereco }}</td>
+                                    <td class="d-none d-xl-table-cell">{{ $user->phone }}</td>
                                     <td>
                                         <a href="{{ route('backend.users.edit', $user->id) }}"
-                                            class="btn btn-primary-yellow" title="Editar">
+                                            class="btn btn-primary-green" title="Editar">
                                             <i class="align-middle" data-feather="edit"></i> <span
                                                 class="align-middle">Editar</span>
                                         </a>
@@ -57,13 +53,13 @@
                                     <td>
                                         @if ($user->id == config('cms.default_user_id') || $user->id == $currentUser->id)
                                             <button onclick="return false" title="Excluír" type="submit"
-                                                class="btn btn-dark text-yellow1 disabled">
+                                                class="btn btn-dark text-white disabled">
                                                 <i class="align-middle" data-feather="trash"></i> <span
                                                     class="align-middle">Excluir</span>
                                             </button>
                                         @else
                                             <a href="{{ route('backend.users.confirm', $user->id) }}" title="Excluír"
-                                                type="submit" class="btn btn-dark text-yellow1">
+                                                type="submit" class="btn btn-dark text-white">
                                                 <i class="align-middle" data-feather="trash"></i> <span
                                                     class="align-middle">Excluir</span>
                                             </a>

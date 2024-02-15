@@ -25,6 +25,9 @@ class UserController extends Controller
     public function create()
     {
         //
+        $user = new User();
+
+        return view('backend.users.create', compact('user'));
     }
 
     /**
@@ -33,6 +36,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+
+        $user = User::create($data);
+
+        //return dd($request->role);
+        return redirect('/backend/users')->with("message", "Novo usuário inserido com sucesso!");
     }
 
     /**
@@ -49,6 +59,9 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        return view('backend.users.edit', compact('user'));
     }
 
     /**
@@ -57,6 +70,12 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        $user->update($request->all());
+
+
+        return redirect('/backend/users')->with("message", "Usuário actualizado com sucesso!");
     }
 
     /**
@@ -65,5 +84,12 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+        $user = User::findOrFail($id);
+        
+        //apagar o usuario
+        $user->delete();
+
+
+        return redirect("/backend/users")->with("message", "Usuário foi excluído com succeso!");
     }
 }

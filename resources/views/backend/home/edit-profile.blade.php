@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary-yellow">Guardar</button>
+                <button type="submit" class="btn btn-primary-green">Guardar</button>
                 <button class="btn btn-danger">Cancelar</button>
 
              
