@@ -34,6 +34,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <!--Toast-->
+    <link rel="stylesheet" href="toastr/toastr.min.css">
 
     @yield('style')    
 </head>
@@ -88,11 +90,16 @@
                 <a href="{{route('about-us')}}" class="nav-item nav-link {{request()->route()->getName() == 'about-us' ? 'active' : ''}}">Sobre</a>
                 <a href="{{route('services')}}" class="nav-item nav-link {{request()->route()->getName() == 'services' ? 'active' : ''}}">Serviços</a>
                 <a href="{{route('products')}}" class="nav-item nav-link {{request()->route()->getName() == 'products' ? 'active' : ''}}">Produtos</a>
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Minha Conta</a>
                     <div class="dropdown-menu m-0">
                         <!-- Links de Auntenticação -->
                         @guest
+                            {{-- Carrinho de compras --}}
+                            <a href="{{ route('shopping.cart') }}" class="dropdown-item">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho <span class="badge text-bg-danger">{{ count((array) session('cart')) }}</span>
+                            </a>
                             @if (Route::has('login'))
                                 <a href="{{route('login')}}" class="dropdown-item">Login</a>
                             @endif
@@ -102,6 +109,10 @@
                         @else
                             <a href="#" class="dropdown-item"> {{ Auth::user()->name }}</a>
                             <a href="{{route('dashboard')}}" class="dropdown-item"> Dashboard</a>
+                              {{-- Carrinho de compras --}}
+                              <a href="{{ route('shopping.cart') }}" class="dropdown-item">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho <span class="badge text-bg-danger">{{ count((array) session('cart')) }}</span>
+                            </a>
                             <hr>
                             <!-- Terminar Sessao -->
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -211,6 +222,16 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!--Toast-->
+    <script src="toastr/toastr.min.js"></script>
+    <script src="toastr/toastr-lima.js"></script>
+
+    @if(session('success') )
+        <script>
+            toastr.success('{{session('success')}}', 'Sucesso');
+        </script>    
+    @endif
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

@@ -33,21 +33,18 @@
     {{-- bootstrap-datetimepicker css --}}
     <link rel="stylesheet" href="/backend/css/bootstrap-datetimepicker.min.css">
 
-    <!-- Toastr CSS-->
-    <link rel="stylesheet" href="/assets/vendor/toastr/toastr.min.css">
-
     {{-- jasny-boostrap --}}
     <link rel="stylesheet" href="/backend/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css">
+
+    <!--Toast CSS-->
+    <link rel="stylesheet" href="/backend/toastr/toastr.min.css">
+
     @yield('style')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>-->
-    
-    <!-- Toastr JS -->
-        <script src="/assets/vendor/jquery/jquery.js"></script>
-        <script src="/assets/vendor/toastr/toastr.min.js"></script>
-        <script src="/assets/vendor/toastr/toastr-lima.js"></script>
+
 
     <script src="/backend/js/html5shiv.min.js"></script>
     <script src="/backend/js/respond.min.js"></script>
@@ -63,12 +60,6 @@
             <main class="content">
                 {{--conteudo da pagina--}}
                 @yield('content')
-
-                @if(session('message') )
-                <script>
-                   toastr.success('{{session('message')}}', 'Sucesso!'); 
-                </script>             
-                @endif
                 
             </main>
 
@@ -79,7 +70,8 @@
    
 
     <!-- jQuery 2.2.3 -->
-    <script src="/backend/js/jquery-2.2.3.min.js"></script>
+    {{-- <script src="/backend/js/jquery-2.2.3.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/backend/plugins/simplemde/simplemde.min.js"></script>
     {{-- moment js --}}
     <script src="/backend/js/moment-with-locales.min.js"></script>
@@ -87,6 +79,21 @@
     <script src="/backend/js/bootstrap-datetimepicker.min.js"></script>
     {{-- jasny-bootstrap --}}
     <script src="/backend/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <!--Toast-->
+    <script src="/backend/toastr/toastr.min.js"></script>
+    <script src="/backend/toastr/toastr-lima.js"></script>
+
+    @if(session('message') )
+        <script>
+            toastr.success('{{session('message')}}', 'Sucesso');
+        </script>  
+    @elseif(session('error-message'))
+        <script>
+            toastr.error('{{session('error-message')}}', 'Sucesso');
+        </script> 
+    @endif
+ 
 
     <script src="/backend/js/app.js"></script>
     

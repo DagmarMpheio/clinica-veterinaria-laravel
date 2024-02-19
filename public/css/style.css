@@ -1,28 +1,28 @@
 /********** Template CSS **********/
 :root {
-    --primary: #7AB730;
-    --secondary: #FFD33C;
-    --light: #F3F3F3;
+    --primary: #7ab730;
+    --secondary: #ffd33c;
+    --light: #f3f3f3;
     --dark: #212121;
 }
 
-[class^=flaticon-]:before,
+[class^="flaticon-"]:before,
 [class*=" flaticon-"]:before,
-[class^=flaticon-]:after,
+[class^="flaticon-"]:after,
 [class*=" flaticon-"]:after {
     font-size: inherit;
     margin-left: 0;
 }
 
 .btn {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     font-weight: 700;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .btn-primary {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .btn-square {
@@ -58,7 +58,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     position: relative;
     margin-left: 30px;
     padding: 30px 0;
@@ -67,7 +67,7 @@
     text-transform: uppercase;
     color: var(--dark);
     outline: none;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .sticky-top.navbar-light .navbar-nav .nav-link {
@@ -88,7 +88,7 @@
         top: -4px;
         left: 50%;
         background: var(--primary);
-        transition: .5s;
+        transition: 0.5s;
     }
 
     .navbar-light .navbar-nav .nav-link:hover::before,
@@ -106,7 +106,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link  {
+    .navbar-light .navbar-nav .nav-link {
         margin-left: 0;
         padding: 10px 0;
     }
@@ -127,7 +127,7 @@
     border: none;
     outline: none !important;
     padding: 18px 20px 20px 28px;
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 .btn-play:before {
@@ -140,7 +140,7 @@
     display: block;
     width: 60px;
     height: 60px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 100%;
     animation: pulse-border 1500ms ease-out infinite;
 }
@@ -155,7 +155,7 @@
     display: block;
     width: 60px;
     height: 60px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 100%;
     transition: all 200ms;
 }
@@ -204,7 +204,7 @@
     z-index: 999;
     font-size: 30px;
     font-weight: normal;
-    color: #FFFFFF;
+    color: #ffffff;
     background: #000000;
     opacity: 1;
 }
@@ -212,7 +212,7 @@
 .service-item a i {
     position: relative;
     padding-left: 20px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .service-item a:hover i {
@@ -228,7 +228,7 @@
     left: 10px;
     margin-top: -1px;
     background: var(--primary);
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .service-item a:hover i::after {
@@ -245,7 +245,7 @@
     bottom: -40px;
     left: 0;
     opacity: 0;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .product-item:hover .btn-action {
@@ -261,7 +261,7 @@
 }
 
 .product-carousel .owl-nav .owl-prev,
-.product-carousel .owl-nav .owl-next{
+.product-carousel .owl-nav .owl-next {
     position: relative;
     margin: 0 5px;
     width: 55px;
@@ -269,10 +269,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #ffffff;
     background: var(--primary);
     font-size: 22px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .product-carousel .owl-nav .owl-prev:hover,
@@ -306,7 +306,7 @@
 }
 
 .price-carousel .owl-nav .owl-prev,
-.price-carousel .owl-nav .owl-next{
+.price-carousel .owl-nav .owl-next {
     position: relative;
     margin: 0 5px;
     width: 45px;
@@ -315,10 +315,10 @@
     align-items: center;
     justify-content: center;
     color: var(--primary);
-    background: #FFFFFF;
+    background: #ffffff;
     font-size: 22px;
     border-radius: 45px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .price-carousel .owl-nav .owl-prev:hover,
@@ -344,10 +344,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #ffffff;
     background: var(--primary);
     font-size: 22px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .team-carousel .owl-nav .owl-prev:hover,
@@ -356,7 +356,7 @@
 }
 
 .team-item img {
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .team-item:hover img {
@@ -372,8 +372,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(122, 183, 48, .8);
-    transition: .5s;
+    background: rgba(122, 183, 48, 0.8);
+    transition: 0.5s;
     opacity: 0;
 }
 
@@ -409,10 +409,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #ffffff;
     background: var(--primary);
     font-size: 22px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .testimonial-carousel .owl-nav .owl-prev:hover,
@@ -434,7 +434,7 @@
 .blog-item a i {
     position: relative;
     padding-left: 20px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .blog-item a:hover i {
@@ -450,9 +450,22 @@
     left: 10px;
     margin-top: -1px;
     background: var(--primary);
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .blog-item a:hover i::after {
     width: 50px;
+}
+
+.text-bg-danger {
+    color: #fff !important;
+    background-color: RGBA(220, 53, 69, var(--bs-bg-opacity, 1)) !important;
+}
+.text-bg-light {
+    color: #000 !important;
+    background-color: RGBA(248, 249, 250, var(--bs-bg-opacity, 1)) !important;
+}
+.text-bg-dark {
+    color: #fff !important;
+    background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
 }

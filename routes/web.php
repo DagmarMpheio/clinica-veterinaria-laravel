@@ -58,3 +58,9 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
 Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
     Route::resource('animals', App\Http\Controllers\Backend\AnimalController::class);
 });
+
+//Rotas do Carrinho
+Route::get('/shopping-cart', [App\Http\Controllers\CartController::class, 'productCart'])->name('shopping.cart');
+Route::get('/product/{id}', [App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addproduct.to.cart');
+Route::patch('/update-shopping-cart', [App\Http\Controllers\CartController::class, 'updateCart'])->name('update.shopping.cart');
+Route::delete('/delete-cart-product', [App\Http\Controllers\CartController::class, 'deleteProductFromCart'])->name('delete.cart.product');

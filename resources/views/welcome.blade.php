@@ -178,7 +178,7 @@
                         <h6 class="text-uppercase">{{$product->name}}</h6>
                         <h5 class="text-primary mb-0">{{$product->formatPrice($product->price)}} kz</h5>
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn btn-primary py-2 px-3" href="#"><i class="bi bi-cart"></i></a>
+                            <a class="btn btn-primary py-2 px-3" href="{{ route('addproduct.to.cart', $product->id) }}"><i class="bi bi-cart"></i></a>
                             <a class="btn btn-primary py-2 px-3" href="#"><i class="bi bi-eye"></i></a>
                         </div>
                     </div>

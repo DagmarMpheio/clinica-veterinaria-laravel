@@ -15,8 +15,6 @@
 @section('content')
     <div class="container-fluid p-0">
 
-        @include('backend.partials.message')
-
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Todos Produtos</h1>
             <a class="badge bg-dark text-white ms-2 p-2" href="{{ route('backend.products.create') }}" title="Novo Produto">
