@@ -68,3 +68,7 @@ Route::delete('/delete-cart-product', [App\Http\Controllers\CartController::clas
 //checkout
 Route::get('/checkout', [App\Http\Controllers\CartController::class, 'showCheckoutForm'])->name('checkout');
 Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkout']);
+
+//pedidos
+Route::get('/list-orders', [App\Http\Controllers\Backend\OrderController::class, 'index'])->name('backend.orders.index');
+Route::get('/generate-pdf/{order}', [App\Http\Controllers\Backend\OrderController::class, 'generatePDF'])->name('generate.pdf');

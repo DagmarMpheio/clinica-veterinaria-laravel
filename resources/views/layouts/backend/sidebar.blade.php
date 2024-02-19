@@ -33,6 +33,12 @@
                     <i class="align-middle" data-feather="twitter"></i> <span class="align-middle">Animais</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ request()->route()->getName() == 'backend.orders.index'? 'active-green': '' }}">
+                <a class="sidebar-link" href="{{ route('backend.orders.index') }}">
+                    <i class="align-middle" data-feather="bookmark"></i> <span class="align-middle">Pedidos</span>
+                </a>
+            </li>
             
 
             <li class="sidebar-header">
