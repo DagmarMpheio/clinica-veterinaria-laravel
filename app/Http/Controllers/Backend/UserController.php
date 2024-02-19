@@ -35,7 +35,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|max:9',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
 
@@ -69,7 +75,13 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'required|max:9',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
         $user = User::findOrFail($id);
 
         $user->update($request->all());

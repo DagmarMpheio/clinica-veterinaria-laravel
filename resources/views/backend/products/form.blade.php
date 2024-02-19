@@ -56,6 +56,37 @@
 
         </div>
 
+        <div class="card">
+            <div class="card-header">
+                {!! Form::label('image', 'Imagem do Produto', [
+                    'id' => 'image',
+                    'class' => 'card-title mb-0',
+                ]) !!}
+            </div>
+            <div class="card-body {{ $errors->has('image') ? ' has-error' : '' }} has-feedback">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="{{ $product->image_url ? $product->image_url : '/backend/img/no-image.png' }}"
+                            alt="...">
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail"
+                        style="max-width: 200px; max-height: 150px;"></div>
+                    <div>
+                        <span class="btn btn-default btn-file"><span class="fileinput-new">Seleccione a
+                                imagem</span><span class="fileinput-exists">Mudar</span>{!! Form::file('image') !!}</span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                    </div>
+                </div>
+
+                @if ($errors->has('image'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+        </div>
+
     </div>
 
     <div class="col-12 col-lg-6">
@@ -73,12 +104,11 @@
                 @endif
             </div>
 
-
-        </div>
+        </div> 
 
         <button class="btn btn-primary-green" type="submit"><i class="align-middle" data-feather="save"></i>
             <span class="align-middle">Guardar</span></button>
-        <a class="btn btn-dark text-white" href="{{ route('backend.users.index') }}"><i class="align-middle"
+        <a class="btn btn-dark text-white" href="{{ route('backend.products.index') }}"><i class="align-middle"
                 data-feather="slash"></i> <span class="align-middle">Cancelar</span></a>
 
     </div>

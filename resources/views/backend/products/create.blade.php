@@ -14,6 +14,7 @@
             'method' => 'POST',
             'autocomplete' => 'off',
             'route' => 'backend.products.store',
+            'files' => true,
             'id' => 'product-form',
         ]) !!}
 

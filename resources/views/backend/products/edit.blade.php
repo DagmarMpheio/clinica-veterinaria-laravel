@@ -10,6 +10,7 @@
             'method' => 'PUT',
             'autocomplete' => 'off',
             'route' => ['backend.products.update', $product->id],
+            'files' => true,
             'id' => 'product-form',
         ]) !!}
 

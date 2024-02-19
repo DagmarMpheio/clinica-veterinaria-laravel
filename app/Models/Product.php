@@ -27,4 +27,18 @@ class Product extends Model
     {
         return number_format($preco, 2);
     }
+
+    //retornar as imagens
+    public function getImageUrlAttribute($value)
+    {
+        $imageUrl = "";
+
+        if (!is_null($this->image)) {
+            $directory = 'img/products';
+            $imagePath = public_path() . "/{$directory}/" . $this->image;
+            if (file_exists($imagePath))
+                $imageUrl = asset("{$directory}/" . $this->image);
+        }
+        return $imageUrl;
+    }
 }
