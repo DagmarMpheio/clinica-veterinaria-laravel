@@ -11,20 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('animals', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('specie');
-            $table->string('race');
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
-            $table->uuid('owner_id');
+        Schema::create('order_product', function (Blueprint $table) {
+            $table->id();
+            $table->uuid('order_id');
+            $table->uuid('product_id');
+            $table->integer('quantity');
             $table->timestamps();
 
-            $table->foreign('owner_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
@@ -37,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('animals');
+        Schema::dropIfExists('order_product');
     }
 };

@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('animals', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('specie');
-            $table->string('race');
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
-            $table->uuid('owner_id');
+            $table->uuid('user_id');
+            $table->string('payment_method');
+            $table->decimal('total', 10, 2);
             $table->timestamps();
 
-            $table->foreign('owner_id')
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
@@ -37,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('animals');
+        Schema::dropIfExists('orders');
     }
 };

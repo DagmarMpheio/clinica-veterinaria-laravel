@@ -65,7 +65,7 @@
                             @guest
                                 <a class="btn btn-danger" href="{{ route('login') }}">Fazer Login para Finalizar compra</a>
                             @else
-                                <button class="btn btn-danger">Finalizar Compra</button>
+                                <a class="btn btn-danger" href="{{route('checkout')}}">Finalizar Compra</a>
                             @endguest
                         </td>
                         <td class="text-right" colspan="4" data-th="Total"><b>Total</b>: {{ number_format($total, 2) }} kz

@@ -64,3 +64,7 @@ Route::get('/shopping-cart', [App\Http\Controllers\CartController::class, 'produ
 Route::get('/product/{id}', [App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addproduct.to.cart');
 Route::patch('/update-shopping-cart', [App\Http\Controllers\CartController::class, 'updateCart'])->name('update.shopping.cart');
 Route::delete('/delete-cart-product', [App\Http\Controllers\CartController::class, 'deleteProductFromCart'])->name('delete.cart.product');
+
+//checkout
+Route::get('/checkout', [App\Http\Controllers\CartController::class, 'showCheckoutForm'])->name('checkout');
+Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkout']);
