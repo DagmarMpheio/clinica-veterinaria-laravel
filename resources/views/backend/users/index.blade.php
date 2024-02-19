@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid p-0">
 
-        <!-- @include('backend.partials.message') -->
+        @include('backend.partials.message')
 
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Todos Usuários</h1>
@@ -58,11 +58,18 @@
                                                     class="align-middle">Excluir</span>
                                             </button>
                                         @else
-                                            <a href="{{ route('backend.users.confirm', $user->id) }}" title="Excluír"
-                                                type="submit" class="btn btn-dark text-white">
-                                                <i class="align-middle" data-feather="trash"></i> <span
-                                                    class="align-middle">Excluir</span>
-                                            </a>
+                                            {!! Form::model($user, [
+                                                'method' => 'DELETE',
+                                                'route' => ['backend.users.destroy', $user->id],
+                                            ]) !!}
+                                                <button title="Excluír"
+                                                    type="submit" class="btn btn-dark text-white">
+                                                    <i class="align-middle" data-feather="trash"></i> <span
+                                                        class="align-middle">Excluir</span>
+                                                </button>
+                                            
+                                            {!! Form::close() !!}
+                            
                                         @endif
                                     </td>
 
@@ -74,7 +81,7 @@
                         </tbody>
                     </table>
                     <div class="mx-4 mt-2">
-                        <p>Total: <b>{{ $usersCount }} usuários</b></p>
+                        <p>Total: <b>{{$usersCount}} {{ Str::plural('usuário', $usersCount)}}</b></p>
                     </div>
                     <!-- Mostrar links de paginacao -->
                     <div class="p-4">

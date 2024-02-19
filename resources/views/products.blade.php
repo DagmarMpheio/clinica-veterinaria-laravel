@@ -13,7 +13,7 @@
         <div class="owl-carousel product-carousel">
             <div class="pb-5">
                 <div class="product-item position-relative bg-light d-flex flex-column text-center">
-                    <img class="img-fluid mb-4" src="img/product-1.png" alt="">
+                    <img class="img-fluid mb-4" src="img/products/product-1.png" alt="">
                     <h6 class="text-uppercase">Quality Pet Foods</h6>
                     <h5 class="text-primary mb-0">$199.00</h5>
                     <div class="btn-action d-flex justify-content-center">
@@ -24,7 +24,7 @@
             </div>
             <div class="pb-5">
                 <div class="product-item position-relative bg-light d-flex flex-column text-center">
-                    <img class="img-fluid mb-4" src="img/product-2.png" alt="">
+                    <img class="img-fluid mb-4" src="img/products/product-2.png" alt="">
                     <h6 class="text-uppercase">Quality Pet Foods</h6>
                     <h5 class="text-primary mb-0">$199.00</h5>
                     <div class="btn-action d-flex justify-content-center">
@@ -35,7 +35,7 @@
             </div>
             <div class="pb-5">
                 <div class="product-item position-relative bg-light d-flex flex-column text-center">
-                    <img class="img-fluid mb-4" src="img/product-3.png" alt="">
+                    <img class="img-fluid mb-4" src="img/products/product-3.png" alt="">
                     <h6 class="text-uppercase">Quality Pet Foods</h6>
                     <h5 class="text-primary mb-0">$199.00</h5>
                     <div class="btn-action d-flex justify-content-center">
@@ -46,7 +46,7 @@
             </div>
             <div class="pb-5">
                 <div class="product-item position-relative bg-light d-flex flex-column text-center">
-                    <img class="img-fluid mb-4" src="img/product-4.png" alt="">
+                    <img class="img-fluid mb-4" src="img/products/product-4.png" alt="">
                     <h6 class="text-uppercase">Quality Pet Foods</h6>
                     <h5 class="text-primary mb-0">$199.00</h5>
                     <div class="btn-action d-flex justify-content-center">
@@ -57,7 +57,7 @@
             </div>
             <div class="pb-5">
                 <div class="product-item position-relative bg-light d-flex flex-column text-center">
-                    <img class="img-fluid mb-4" src="img/product-2.png" alt="">
+                    <img class="img-fluid mb-4" src="img/products/product-2.png" alt="">
                     <h6 class="text-uppercase">Quality Pet Foods</h6>
                     <h5 class="text-primary mb-0">$199.00</h5>
                     <div class="btn-action d-flex justify-content-center">

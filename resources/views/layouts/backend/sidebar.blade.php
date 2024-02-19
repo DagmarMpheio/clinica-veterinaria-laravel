@@ -20,6 +20,12 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Usuários</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ request()->route()->getName() == 'backend.products.index' ||request()->route()->getName() == 'backend.products.edit' ||request()->route()->getName() == 'backend.products.create'? 'active-green': '' }}">
+                <a class="sidebar-link" href="{{ route('backend.products.index') }}">
+                    <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Produtos</span>
+                </a>
+            </li>
             
 
             <li class="sidebar-header">

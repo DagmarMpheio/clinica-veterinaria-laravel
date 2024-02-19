@@ -85,11 +85,21 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        
+
         //apagar o usuario
         $user->delete();
 
 
         return redirect("/backend/users")->with("message", "Usuário foi excluído com succeso!");
+    }
+
+    public function confirm(Request $resquest, $id)
+    {
+        //
+
+        $user = User::findOrFail($id);
+        $users = User::where('id', '!=', $user->id)->pluck('name', 'id');
+
+        return view("backend.users.confirm", compact('user', 'users'));
     }
 }

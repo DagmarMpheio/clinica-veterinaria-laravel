@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Pagina Inicial */
+
 Route::get('/', function () {
     return view('welcome');
 })->name('inicio');
@@ -41,7 +42,7 @@ Route::get('/contact-us', function () {
 
 Auth::routes();
 
-										/* rotas dashboard*/
+/* rotas dashboard*/
 Route::get('/dashboard', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
 Route::get('/perfil', [App\Http\Controllers\Backend\HomeController::class, 'show'])->name('perfil');
 
@@ -50,4 +51,9 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
     Route::resource('users', App\Http\Controllers\Backend\UserController::class);
     //rota para o metodo confirm
     Route::get('users/confirm/{users}', [App\Http\Controllers\Backend\UserController::class, 'confirm'])->name('users.confirm');
+});
+
+//grupo de rotas -> products
+Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+    Route::resource('products', App\Http\Controllers\Backend\ProductController::class);
 });

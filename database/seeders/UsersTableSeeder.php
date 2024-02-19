@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         //reset a tabela users
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         DB::table('users')->truncate(); //apagar todos os dados da tabela
