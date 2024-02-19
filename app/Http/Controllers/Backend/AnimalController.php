@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Product;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
-class ProductController extends AdminController
+class AnimalController extends AdminController
 {
     protected $uploadPath;
 
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath = 'img/products';
+        $this->uploadPath = 'img/animals';
     }
 
     /**
@@ -22,10 +22,10 @@ class ProductController extends AdminController
      */
     public function index()
     {
-        $products = Product::orderBy('name')->simplePaginate(5);
-        $productsCount = Product::count();
+        $animals = Animal::orderBy('name')->simplePaginate(5);
+        $animalsCount = Animal::count();
 
-        return view('backend.products.index', compact('products', 'productsCount'));
+        return view('backend.animals.index', compact('animals', 'animalsCount'));
     }
 
     /**
@@ -33,9 +33,9 @@ class ProductController extends AdminController
      */
     public function create()
     {
-        $product = new Product();
+        $animal = new Animal();
 
-        return view('backend.products.create', compact('product'));
+        return view('backend.animals.create', compact('animal'));
     }
 
     /**
@@ -43,27 +43,26 @@ class ProductController extends AdminController
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'price' => 'required',
-            'stock' => 'required',
+            'specie' => 'required|string',
+            'race' => 'required|string',
             'image' => 'file|mimes:jpeg,png,jpg,gif,svg|max:81920',
         ]);
 
-        //$data = $request->all();
         $data = $this->handleResquest($request);
 
-        $product = Product::create($data);
+        //$animal = Animal::create($data);
+        $newAnimal = $request->user()->animals()->create($data);
 
         //return dd($request->role);
-        return redirect('/backend/products')->with("message", "Novo produto inserido com sucesso!");
+        return redirect('/backend/animals')->with("message", "Animal cadastrado com sucesso!");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Animal $animal)
     {
         //
     }
@@ -71,47 +70,47 @@ class ProductController extends AdminController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Animal $animal)
     {
-        return view('backend.products.edit', compact('product'));
+        return view('backend.animals.edit', compact('animal'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Animal $animal)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'price' => 'required',
-            'stock' => 'required',
+            'specie' => 'required|string',
+            'race' => 'required|string',
             'image' => 'file|mimes:jpeg,png,jpg,gif,svg|max:81920',
         ]);
 
-        $oldImage = $product->image;
+        $oldImage = $animal->image;
 
         $data = $this->handleResquest($request);
 
-        $product->update($data);
+        $animal->update($data);
 
-        if ($oldImage !== $product->image) {
+        if ($oldImage !== $animal->image) {
             $this->removeImage($oldImage);
         }
 
-        return redirect('/backend/products')->with("message", "Produto actualizado com sucesso!");
+        return redirect('/backend/animals')->with("message", "Animal actualizado com sucesso!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Animal $animal)
     {
-        $this->removeImage($product->image); //remove a imagem da bd e do servidor
+        $this->removeImage($animal->image); //remove a imagem da bd e do servidor
 
         //apagar o produto
-        $product->delete();
+        $animal->delete();
 
-        return redirect("/backend/products")->with("message", "Produto foi excluído com succeso!");
+        return redirect("/backend/animals")->with("message", "Animal foi excluído com succeso!");
     }
 
     private function handleResquest(Request $request)

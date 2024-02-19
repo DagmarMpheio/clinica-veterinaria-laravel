@@ -53,3 +53,8 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
 Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
     Route::resource('products', App\Http\Controllers\Backend\ProductController::class);
 });
+
+//grupo de rotas -> animais
+Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+    Route::resource('animals', App\Http\Controllers\Backend\AnimalController::class);
+});

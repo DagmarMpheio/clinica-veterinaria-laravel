@@ -46,4 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function animals()
+    {
+        return $this->hasMany(Animal::class, 'owner_id'); //um usuario tem um ou muitos animais
+    }
 }

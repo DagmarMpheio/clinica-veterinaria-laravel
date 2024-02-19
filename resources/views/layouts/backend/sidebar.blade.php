@@ -26,6 +26,13 @@
                     <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Produtos</span>
                 </a>
             </li>
+
+
+            <li class="sidebar-item {{ request()->route()->getName() == 'backend.animals.index' ||request()->route()->getName() == 'backend.animals.edit' ||request()->route()->getName() == 'backend.animals.create'? 'active-green': '' }}">
+                <a class="sidebar-link" href="{{ route('backend.animals.index') }}">
+                    <i class="align-middle" data-feather="twitter"></i> <span class="align-middle">Animais</span>
+                </a>
+            </li>
             
 
             <li class="sidebar-header">
