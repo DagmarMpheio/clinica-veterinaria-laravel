@@ -29,6 +29,7 @@ class AppointmentController extends AdminController
         $request->validate([
             'type' => 'required',
             'date' => 'required|date',
+            'time' => 'required',
             'animal_id' => 'required|exists:animals,id',
             'user_id' => 'required|exists:users,id',
         ]);
@@ -47,10 +48,12 @@ class AppointmentController extends AdminController
         $events = [];
 
         foreach ($appointments as $appointment) {
+            $endDateTime = $appointment->date->copy()->endOfDay();
+
             $events[] = [
                 'title' => $appointment->type,
                 'start' => $appointment->date->format('Y-m-d\TH:i:s'),
-                'end' => $appointment->date->format('Y-m-d\TH:i:s'),
+                'end' => $endDateTime->format('Y-m-d\TH:i:s'),
                 // Outros campos do evento, se necessário
             ];
         }

@@ -37,7 +37,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tipo</th>
-                                <th>Data</th>
+                                <th>Data/Hora</th>
                                 <th>Animal</th>
                                 <th>Usuário</th>
                                 <th colspan="2">Acção</th>
@@ -52,15 +52,11 @@
                                     <td>{{ $counter++ }}</td>
                                     <td>{{ $appointment->type }}</td>
                                     <td>
-                                        @if (is_string($appointment->date))
-                                            {{ \Carbon\Carbon::parse($appointment->date)->format('d/m/Y H:i:s') }}
-                                        @else
-                                            {{ $appointment->date->format('d/m/Y H:i:s') }}
-                                        @endif
+                                        {{ $appointment->date }} {{ $appointment->time}}
                                     </td>
                                     <td>{{ $appointment->animal->name }}</td>
                                     <td>{{ $appointment->user->name }}</td>
-                                   {{--  <td>
+                                    {{--  <td>
                                         <a href="{{ route('backend.appointments.edit', $appointment) }}"
                                             class="btn btn-primary-green" title="Editar">
                                             <i class="align-middle" data-feather="edit"></i> <span

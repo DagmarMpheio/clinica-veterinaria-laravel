@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('type');
-            $table->timestamp('date');
+            $table->date('date');
+            $table->time('time');
             $table->uuid('animal_id');
             $table->uuid('user_id');
             $table->timestamps();

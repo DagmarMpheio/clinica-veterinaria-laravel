@@ -10,7 +10,7 @@ class Appointment extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['type', 'date', 'animal_id', 'user_id'];
+    protected $fillable = ['type', 'date', 'time', 'animal_id', 'user_id'];
 
     public function animal()
     {

@@ -39,12 +39,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.min.js"></script> --}}
 
+    <!-- Tempus Dominus Bootstrap 4 para seleção de hora -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js">
+    </script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
+
             $('#calendar').fullCalendar({
                 selectable: true,
-                select: function (start, end) {
-                    // Atualiza o valor do campo oculto 'selected-date' com a data selecionada
+                select: function(start, end) {
+                    // Actualiza o valor do campo oculto 'selected-date' com a data selecionada
                     $('#selected-date').val(moment(start).format('YYYY-MM-DD'));
                 },
                 header: {
@@ -54,7 +60,7 @@
                 },
                 defaultView: 'month',
                 eventLimit: true,
-                events: '/appointments-json',
+                events: '/backend/appointments-json',
                 /* events: [
                     // Pode adicionar eventos já agendados aqui, se necessário
                 ], */
@@ -62,20 +68,20 @@
                 validRange: {
                     start: moment().format('YYYY-MM-DD'), // Desativa datas antes da data atual
                 },
-                dayRender: function (date, cell) {
-                    var currentDate = moment(date).format('YYYY-MM-DD');
-
-                    // Verifica se há eventos para a data actual
-                    var events = $('#calendar').fullCalendar('clientEvents', function (event) {
-                        return event.start.format('YYYY-MM-DD') === currentDate;
-                    });
-
-                    // Desativa a seleção se houver eventos para a data actual
-                    if (events.length > 0) {
-                        cell.addClass('fc-disable-select');
-                    }
-                },
             });
+
+            // Inicializar o Tempus Dominus para seleção de hora com restrições
+            $('#timepicker').datetimepicker({
+                format: 'HH:mm', // Formato desejado para a hora
+                disabledHours: [0, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21, 22,
+                    23
+                ], // Desativar horas específicas
+                enabledHours: [8, 9, 10, 11, 12, 13, 14,
+                    15
+                ], // Habilitar apenas horas específicas
+                stepping: 15, // Intervalo de minutos
+            });
+
         });
     </script>
 

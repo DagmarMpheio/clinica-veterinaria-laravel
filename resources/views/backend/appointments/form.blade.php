@@ -57,6 +57,27 @@
 
         </div>
 
+        <div class="card">
+            <div class="card-header">
+                {!! Form::label('time', 'Hora', ['class' => 'card-title mb-0', 'for' => 'time']) !!}
+            </div>
+
+            <div class="card-body {{ $errors->has('time') ? ' has-error' : '' }} has-feedback">
+                <div class="input-group date" id="timepicker" data-target-input="nearest">
+                    <input type="text" name="time" class="form-control datetimepicker-input" data-target="#timepicker"/>
+                    <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="align-middle" data-feather="clock"></i></div>
+                    </div>
+                </div>
+                @if ($errors->has('time'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('time') }}</strong>
+                    </span>
+                @endif
+            </div>
+            
+        </div>
+
     </div>
 
     <div class="col-12 col-lg-6">

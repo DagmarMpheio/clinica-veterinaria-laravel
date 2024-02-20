@@ -90,16 +90,11 @@
             <div class="card">
                 <div class="card-header">Detalhes do Agendamento</div>
                 <div class="card-body">
-                    <p>Caro(a) {{$appointment->user->name}}, a sua marcação foi efectuada com sucesso.</p>
+                    <p>Caro(a) {{ $appointment->user->name }}, a sua marcação foi efectuada com sucesso.</p>
                     <p><b>Animal: </b>{{ $appointment->animal->name }}</p>
                     <p><b>Serviço de Agendamento: </b>{{ $appointment->type }}</p>
-                    <p><b>Data e Hora do Agendamento: </b>
-                        @if (is_string($appointment->date))
-                            {{ \Carbon\Carbon::parse($appointment->date)->format('d/m/Y H:i:s') }}
-                        @else
-                            {{ $appointment->date->format('d/m/Y H:i:s') }}
-                        @endif
-                    </p>
+                    <p><b>Data do Agendamento: </b> {{ $appointment->date }}</p>
+                    <p><b>Hora do Agendamento: </b>{{ $appointment->time}}</p>
                     <p><b>Referência: </b> {{ $appointment->created_at->timestamp }}</p>
                 </div>
             </div>
