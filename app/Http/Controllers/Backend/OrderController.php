@@ -21,13 +21,17 @@ class OrderController extends AdminController
 
     public function generatePDF(Order $order)
     {
+        // Converter a data de criação para segundos
+        $timestamp = $order->created_at->timestamp;
+
+        // Criar o nome do arquivo com base no timestamp
+        $fileName = 'Pedido '.$timestamp . '.pdf';
         $pdf = PDF::loadView('backend.orders.pdf-report', ['order' => $order]);
 
-        //return $pdf->download($order->order_number. '.pdf');
-        
-        // Retorna o PDF para ser visualizado no navegador
-        return $pdf->stream('pdf-report.pdf');
+        // Retornar o PDF para ser visualizado no navegador
+        return $pdf->download($fileName);
 
-        //return $pdf->download('pdf-report.pdf');
+        //return $pdf->download($order->order_number. '.pdf');
+        //return $pdf->stream('pdf-report.pdf');
     }
 }

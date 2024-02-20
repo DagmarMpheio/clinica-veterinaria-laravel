@@ -81,6 +81,8 @@ class CartController extends Controller
             $product = Product::findOrFail($productId);
             $newStock = $product->stock - $productData['quantity'];
 
+            echo "newStock: $newStock";
+
             // Verifica rse o estoque é suficiente
             if ($newStock < 0) {
                 // Se o estoque for insuficiente, redireciona de volta ao carrinho com uma mensagem de erro

@@ -39,6 +39,12 @@
                     <i class="align-middle" data-feather="bookmark"></i> <span class="align-middle">Pedidos</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ request()->route()->getName() == 'backend.appointments.index'||request()->route()->getName() == 'backend.appointments.edit' ||request()->route()->getName() == 'backend.appointments.create' ? 'active-green': '' }}">
+                <a class="sidebar-link" href="{{ route('backend.appointments.index') }}">
+                    <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Agendamentos</span>
+                </a>
+            </li>
             
 
             <li class="sidebar-header">

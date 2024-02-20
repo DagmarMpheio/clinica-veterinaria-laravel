@@ -51,10 +51,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Animal::class, 'owner_id'); //um usuario tem um ou muitos animais
     }
-    
+
     // Define o relacionamento com pedidos
     public function orders()
     {
         return $this->hasMany(Order::class); //um usuário pode ter muitos pedidos.
+    }
+
+
+    // Relacionamento com os agendamentos
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
 }

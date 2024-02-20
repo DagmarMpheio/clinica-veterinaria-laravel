@@ -53,7 +53,7 @@ class ProductSeeder extends Seeder
         $product1->id = '82ab649e-691b-4c33-924f-bd1ad43c9453';
         $product1->name = 'Ração Animal 2';
         $product1->price = $faker->randomFloat(2,100);
-        $product1->stock = 2;
+        $product1->stock = 12;
         $product1->image = 'product-3.png';
         $product1->description = $faker->text(rand(250, 300));
         $product1->save();

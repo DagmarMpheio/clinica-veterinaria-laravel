@@ -11,7 +11,7 @@ class Order extends Model
     use HasFactory, HasUuids;
 
     protected $fillable = [
-        'user_id', 'payment_method','total'
+        'user_id', 'payment_method','total','status'
     ];
 
     // Define o relacionamento com produtos

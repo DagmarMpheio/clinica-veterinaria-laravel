@@ -41,4 +41,10 @@ class Animal extends Model
         }
         return $imageUrl;
     }
+
+    // Relacionamento com os agendamentos
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }

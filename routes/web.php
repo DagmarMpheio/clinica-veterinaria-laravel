@@ -59,6 +59,12 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
     Route::resource('animals', App\Http\Controllers\Backend\AnimalController::class);
 });
 
+//grupo de rotas -> agendamentos
+Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+    Route::resource('appointments', App\Http\Controllers\Backend\AppointmentController::class);
+    Route::get('/appointments-json', [App\Http\Controllers\Backend\AppointmentController::class, 'getAppointmentsJson']);
+});
+
 //Rotas do Carrinho
 Route::get('/shopping-cart', [App\Http\Controllers\CartController::class, 'productCart'])->name('shopping.cart');
 Route::get('/product/{id}', [App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addproduct.to.cart');
