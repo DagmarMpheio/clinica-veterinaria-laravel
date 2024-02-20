@@ -9,7 +9,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AnimalSeeder extends Seeder
+class AnimalTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

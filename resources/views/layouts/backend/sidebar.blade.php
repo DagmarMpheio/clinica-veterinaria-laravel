@@ -45,6 +45,12 @@
                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Agendamentos</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ request()->route()->getName() == 'backend.feedbacks.index'||request()->route()->getName() == 'backend.feedbacks.edit' ||request()->route()->getName() == 'backend.feedbacks.create' ? 'active-green': '' }}">
+                <a class="sidebar-link" href="{{ route('backend.feedbacks.index') }}">
+                    <i class="align-middle" data-feather="alert-circle"></i> <span class="align-middle">Feedbacks</span>
+                </a>
+            </li>
             
 
             <li class="sidebar-header">

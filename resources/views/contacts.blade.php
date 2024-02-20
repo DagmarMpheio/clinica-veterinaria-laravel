@@ -12,19 +12,20 @@
         </div>
         <div class="row g-5">
             <div class="col-lg-7">
-                <form>
+                <form method="POST" action="{{ route('backend.feedbacks.store') }}">
+                    @csrf
                     <div class="row g-3">
                         <div class="col-12">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Seu Nome" style="height: 55px;">
+                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Seu Nome" name="name" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <input type="email" class="form-control bg-light border-0 px-4" placeholder="Seu Email" style="height: 55px;">
+                            <input type="email" class="form-control bg-light border-0 px-4" placeholder="Seu Email" name="email" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Assunto" style="height: 55px;">
+                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Crítica ou Elogio" name="topic" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="8" placeholder="Messagem"></textarea>
+                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="8" placeholder="Messagem" name="message"></textarea>
                         </div>
                         <div class="col-12">
                             <button class="btn btn-primary w-100 py-3" type="submit">Enviar Messagem</button>

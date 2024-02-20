@@ -1,18 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
 use App\Models\feedback;
 use Illuminate\Http\Request;
 
-class FeedbackController extends Controller
+class FeedbackController extends AdminController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $feedbacks = Feedback::latest()->simplePaginate(5);
+        $feedbacksCount = Feedback::count();
+
+        return view('backend.feedbacks.index', compact('feedbacks','feedbacksCount'));
     }
 
     /**
@@ -20,7 +23,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +31,17 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'topic' => 'required|string',
+            'message' => 'required',
+        ]);
+
+        $feedback = Feedback::create($request->all());
+
+        //return dd($request->role);
+        return redirect()->back()->with("success", "Mensagem enviada!");
     }
 
     /**
