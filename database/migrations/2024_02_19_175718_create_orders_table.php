@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->string('payment_method');
+            $table->string('status');
             $table->decimal('total', 10, 2);
             $table->timestamps();
 

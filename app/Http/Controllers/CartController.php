@@ -81,8 +81,6 @@ class CartController extends Controller
             $product = Product::findOrFail($productId);
             $newStock = $product->stock - $productData['quantity'];
 
-            echo "newStock: $newStock";
-
             // Verifica rse o estoque é suficiente
             if ($newStock < 0) {
                 // Se o estoque for insuficiente, redireciona de volta ao carrinho com uma mensagem de erro
@@ -98,6 +96,7 @@ class CartController extends Controller
         $order = new Order();
         $order->user_id = $userId;
         $order->payment_method = $request->input('payment_method');
+        $order->status = 'Pendente';
         $order->total = $total;
         $order->save();
 

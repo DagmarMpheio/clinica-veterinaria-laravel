@@ -78,3 +78,6 @@ Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkout'
 //pedidos
 Route::get('/list-orders', [App\Http\Controllers\Backend\OrderController::class, 'index'])->name('backend.orders.index');
 Route::get('/generate-pdf/{order}', [App\Http\Controllers\Backend\OrderController::class, 'generatePDF'])->name('generate.pdf');
+Route::post('/orders/{order}/approve', [App\Http\Controllers\Backend\OrderController::class, 'approveOrder'])->name('backend.orders.approve');
+Route::post('/orders/{order}/reject', [App\Http\Controllers\Backend\OrderController::class, 'rejectOrder'])->name('backend.orders.reject');
+

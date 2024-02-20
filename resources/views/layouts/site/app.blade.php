@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ config('app.name', 'Laravel') }} -  @yield('title')</title>
+    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="VetCarePro" name="keywords">
     <meta content="VetCarePro" name="description">
@@ -13,7 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <!--Toast-->
     <link rel="stylesheet" href="toastr/toastr.min.css">
 
-    @yield('style')    
+    @yield('style')
 </head>
 
 <body>
@@ -79,17 +79,22 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
         <a href="index.html" class="navbar-brand ms-lg-5">
-            <h1 class="m-0 text-uppercase text-dark"><i class="fa-solid fa-paw fs-1 text-primary me-3"></i>Vet Care Pro</h1>
+            <h1 class="m-0 text-uppercase text-dark"><i class="fa-solid fa-paw fs-1 text-primary me-3"></i>Vet Care Pro
+            </h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="/" class="nav-item nav-link {{request()->route()->getName() == 'inicio' ? 'active' : ''}}">Home</a>
-                <a href="{{route('about-us')}}" class="nav-item nav-link {{request()->route()->getName() == 'about-us' ? 'active' : ''}}">Sobre</a>
-                <a href="{{route('services')}}" class="nav-item nav-link {{request()->route()->getName() == 'services' ? 'active' : ''}}">Serviços</a>
-                <a href="{{route('products')}}" class="nav-item nav-link {{request()->route()->getName() == 'products' ? 'active' : ''}}">Produtos</a>
+                <a href="/"
+                    class="nav-item nav-link {{ request()->route()->getName() == 'inicio' ? 'active' : '' }}">Home</a>
+                <a href="{{ route('about-us') }}"
+                    class="nav-item nav-link {{ request()->route()->getName() == 'about-us' ? 'active' : '' }}">Sobre</a>
+                <a href="{{ route('services') }}"
+                    class="nav-item nav-link {{ request()->route()->getName() == 'services' ? 'active' : '' }}">Serviços</a>
+                <a href="{{ route('products') }}"
+                    class="nav-item nav-link {{ request()->route()->getName() == 'products' ? 'active' : '' }}">Produtos</a>
 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Minha Conta</a>
@@ -98,25 +103,27 @@
                         @guest
                             {{-- Carrinho de compras --}}
                             <a href="{{ route('shopping.cart') }}" class="dropdown-item">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho <span class="badge text-bg-danger">{{ count((array) session('cart')) }}</span>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho <span
+                                    class="badge text-bg-danger">{{ count((array) session('cart')) }}</span>
                             </a>
                             @if (Route::has('login'))
-                                <a href="{{route('login')}}" class="dropdown-item">Login</a>
+                                <a href="{{ route('login') }}" class="dropdown-item">Login</a>
                             @endif
                             @if (Route::has('register'))
-                                <a href="{{route('register')}}" class="dropdown-item">Criar Conta</a>
+                                <a href="{{ route('register') }}" class="dropdown-item">Criar Conta</a>
                             @endif
                         @else
                             <a href="#" class="dropdown-item"> {{ Auth::user()->name }}</a>
-                            <a href="{{route('dashboard')}}" class="dropdown-item"> Dashboard</a>
-                              {{-- Carrinho de compras --}}
-                              <a href="{{ route('shopping.cart') }}" class="dropdown-item">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho <span class="badge text-bg-danger">{{ count((array) session('cart')) }}</span>
+                            <a href="{{ route('dashboard') }}" class="dropdown-item"> Dashboard</a>
+                            {{-- Carrinho de compras --}}
+                            <a href="{{ route('shopping.cart') }}" class="dropdown-item">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho <span
+                                    class="badge text-bg-danger">{{ count((array) session('cart')) }}</span>
                             </a>
                             <hr>
                             <!-- Terminar Sessao -->
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Terminar Sessão') }}
                             </a>
@@ -127,14 +134,16 @@
                         @endguest
                     </div>
                 </div>
-                <a href="{{route('contact-us')}}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contactos <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('contact-us') }}"
+                    class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contactos <i
+                        class="bi bi-arrow-right"></i></a>
             </div>
         </div>
     </nav>
     <!-- Navbar End -->
 
     @yield('content')
-    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
@@ -150,19 +159,27 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Links Rápidos</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="{{route('inicio')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="{{route('about-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
-                        <a class="text-body mb-2" href="{{route('services')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
-                        <a class="text-body" href="{{route('contact-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
+                        <a class="text-body mb-2" href="{{ route('inicio') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="{{ route('about-us') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
+                        <a class="text-body mb-2" href="{{ route('services') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
+                        <a class="text-body" href="{{ route('contact-us') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Popular Links</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="{{route('inicio')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="{{route('about-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
-                        <a class="text-body mb-2" href="{{route('services')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
-                        <a class="text-body" href="{{route('contact-us')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
+                        <a class="text-body mb-2" href="{{ route('inicio') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="{{ route('about-us') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Sobre</a>
+                        <a class="text-body mb-2" href="{{ route('services') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Nossos Serviços</a>
+                        <a class="text-body" href="{{ route('contact-us') }}"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Contacte-nos</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -175,10 +192,14 @@
                     </form>
                     <h6 class="text-uppercase mt-4 mb-3">Siga-nos</h6>
                     <div class="d-flex">
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
-                        <a class="btn btn-outline-primary btn-square" href="#"><i class="bi bi-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i
+                                class="bi bi-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i
+                                class="bi bi-facebook"></i></a>
+                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i
+                                class="bi bi-linkedin"></i></a>
+                        <a class="btn btn-outline-primary btn-square" href="#"><i
+                                class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-12 text-center text-body">
@@ -201,10 +222,12 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-white" href="#">VetCarePro</a>. Todos Direitos Reservados.</p>
+                    <p class="mb-md-0">&copy; <a class="text-white" href="#">VetCarePro</a>. Todos Direitos
+                        Reservados.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
+                    <p class="mb-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -227,10 +250,14 @@
     <script src="toastr/toastr.min.js"></script>
     <script src="toastr/toastr-lima.js"></script>
 
-    @if(session('success') )
+    @if (session('success'))
         <script>
-            toastr.success('{{session('success')}}', 'Sucesso');
-        </script>    
+            toastr.success('{{ session('success') }}', 'Sucesso');
+        </script>
+    @elseif(session('error-message'))
+        <script>
+            toastr.error('{{ session('error-message') }}', 'Erro');
+        </script>
     @endif
 
     <!-- Template Javascript -->

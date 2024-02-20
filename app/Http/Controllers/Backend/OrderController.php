@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Mail\AlertOrderEmail;
 use App\Models\Order;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends AdminController
 {
@@ -25,7 +28,7 @@ class OrderController extends AdminController
         $timestamp = $order->created_at->timestamp;
 
         // Criar o nome do arquivo com base no timestamp
-        $fileName = 'Pedido '.$timestamp . '.pdf';
+        $fileName = 'Pedido ' . $timestamp . '.pdf';
         $pdf = PDF::loadView('backend.orders.pdf-report', ['order' => $order]);
 
         // Retornar o PDF para ser visualizado no navegador
@@ -33,5 +36,31 @@ class OrderController extends AdminController
 
         //return $pdf->download($order->order_number. '.pdf');
         //return $pdf->stream('pdf-report.pdf');
+    }
+
+    //Aprovar pedido
+    public function approveOrder(Order $order)
+    {
+        // Implemente a lógica de aprovação aqui
+        $order->status = 'Aprovado';
+        $order->save();
+
+        //Enviar email com os dados so agendamento
+        Mail::to(Auth::user()->email)->send(new AlertOrderEmail($order));
+
+        return redirect('/list-orders')->with('success', 'Pedido aprovado com sucesso.');
+    }
+
+    //rejeitar pedido
+    public function rejectOrder(Order $order)
+    {
+        // Implemente a lógica de rejeição aqui
+        $order->status = 'Rejeitado';
+        $order->save();
+
+        //Enviar email com os dados so agendamento
+        Mail::to(Auth::user()->email)->send(new AlertOrderEmail($order));
+
+        return redirect('/list-orders')->with('success', 'Pedido rejeitado com sucesso.');
     }
 }

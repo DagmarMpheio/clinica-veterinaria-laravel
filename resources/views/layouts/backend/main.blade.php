@@ -90,7 +90,7 @@
         </script>  
     @elseif(session('error-message'))
         <script>
-            toastr.error('{{session('error-message')}}', 'Sucesso');
+            toastr.error('{{session('error-message')}}', 'Erro');
         </script> 
     @endif
  
