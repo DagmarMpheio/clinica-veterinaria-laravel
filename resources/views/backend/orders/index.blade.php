@@ -51,6 +51,8 @@
 @section('content')
     <div class="container-fluid p-0">
 
+        @include('backend.partials.message')
+        
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Todos Pedidos</h1>
         </div>

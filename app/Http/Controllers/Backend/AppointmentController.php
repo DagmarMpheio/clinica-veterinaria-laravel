@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Mail\AlertAppointmentEmail;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends AdminController
 {
@@ -30,7 +33,10 @@ class AppointmentController extends AdminController
             'user_id' => 'required|exists:users,id',
         ]);
 
-        Appointment::create($request->all());
+        $appointment = Appointment::create($request->all());
+
+        //Enviar email com os dados so agendamento
+        Mail::to(Auth::user()->email)->send(new AlertAppointmentEmail($appointment));
 
         return redirect()->route('backend.appointments.index')->with('success', 'Agendamento criado com sucesso.');
     }
@@ -50,5 +56,17 @@ class AppointmentController extends AdminController
         }
 
         return response()->json($events);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Appointment $appointment)
+    {
+
+        //apagar o agendamento
+        $appointment->delete();
+
+        return redirect("/backend/appointments")->with("message", "Agendamento foi excluído com succeso!");
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Order;
+use App\Models\Appointment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AlertOrderEmail extends Mailable
+class AlertAppointmentEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,7 +19,7 @@ class AlertOrderEmail extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-        public Order $order,
+        public Appointment $appointment,
     )
     {
         //
@@ -32,10 +32,10 @@ class AlertOrderEmail extends Mailable
     {
         return new Envelope(
             from: new Address('vetcarepro@example.com', 'VetProCare'),
-            subject: 'VetProCare - Estado do Pedido',
-            tags: ['order'],
+            subject: 'VetProCare - Agendamento Criado',
+            tags: ['appointment'],
             metadata: [
-                'order_id' => $this->order->id,
+                'appointment_id' => $this->appointment->id,
             ],
         );
     }
@@ -46,7 +46,7 @@ class AlertOrderEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.alert-order-email',
+            view: 'emails.alert-appointment-email',
         );
     }
 

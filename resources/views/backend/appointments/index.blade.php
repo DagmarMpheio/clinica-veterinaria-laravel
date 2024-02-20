@@ -3,21 +3,24 @@
 @section('title', 'Agendamentos')
 
 @section('style')
-<style>
-    .appointment-image{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    }
-</style>
+    <style>
+        .appointment-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
 @endsection
 
 @section('content')
     <div class="container-fluid p-0">
 
+        @include('backend.partials.message')
+
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Todos Agendamentos</h1>
-            <a class="badge bg-dark text-white ms-2 p-2" href="{{ route('backend.appointments.create') }}" title="Novo Agendamento">
+            <a class="badge bg-dark text-white ms-2 p-2" href="{{ route('backend.appointments.create') }}"
+                title="Novo Agendamento">
                 <i class="align-middle" data-feather="plus"></i> <span class="align-middle"> Novo Agendamento</span>
             </a>
         </div>
@@ -37,41 +40,46 @@
                                 <th>Data</th>
                                 <th>Animal</th>
                                 <th>Usuário</th>
-                                <th colspan="2">Acções</th>
+                                <th colspan="2">Acção</th>
                             </tr>
                         </thead>
                         @php
                             $counter = 1;
                         @endphp
                         <tbody>
-                            @foreach($appointments as $appointment)
+                            @foreach ($appointments as $appointment)
                                 <tr>
                                     <td>{{ $counter++ }}</td>
                                     <td>{{ $appointment->type }}</td>
-                                    <td>{{ $appointment->date }}</td>
+                                    <td>
+                                        @if (is_string($appointment->date))
+                                            {{ \Carbon\Carbon::parse($appointment->date)->format('d/m/Y H:i:s') }}
+                                        @else
+                                            {{ $appointment->date->format('d/m/Y H:i:s') }}
+                                        @endif
+                                    </td>
                                     <td>{{ $appointment->animal->name }}</td>
                                     <td>{{ $appointment->user->name }}</td>
-                                    <td>
+                                   {{--  <td>
                                         <a href="{{ route('backend.appointments.edit', $appointment) }}"
                                             class="btn btn-primary-green" title="Editar">
                                             <i class="align-middle" data-feather="edit"></i> <span
                                                 class="align-middle">Editar</span>
                                         </a>
-                                    </td>
+                                    </td> --}}
 
                                     <td>
                                         {!! Form::model($appointment, [
-                                                'method' => 'DELETE',
-                                                'route' => ['backend.appointments.destroy', $appointment->id],
+                                            'method' => 'DELETE',
+                                            'route' => ['backend.appointments.destroy', $appointment->id],
                                         ]) !!}
-                                            <button title="Excluír"
-                                                type="submit" class="btn btn-dark text-white">
-                                                <i class="align-middle" data-feather="trash"></i> 
-                                                <span class="align-middle">Excluir</span>
-                                            </button>
-                                            
+                                        <button title="Excluír" type="submit" class="btn btn-dark text-white">
+                                            <i class="align-middle" data-feather="trash"></i>
+                                            <span class="align-middle">Excluir</span>
+                                        </button>
+
                                         {!! Form::close() !!}
-                            
+
                                     </td>
 
                                 </tr>
@@ -80,7 +88,7 @@
                         </tbody>
                     </table>
                     <div class="mx-4 mt-2">
-                        <p>Total: <b>{{$appointmentsCount}} {{ Str::plural('agendamento', $appointmentsCount)}}</b></p>
+                        <p>Total: <b>{{ $appointmentsCount }} {{ Str::plural('agendamento', $appointmentsCount) }}</b></p>
                     </div>
                     <!-- Mostrar links de paginacao -->
                     <div class="p-4">

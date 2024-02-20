@@ -16,7 +16,7 @@
                 <font color="red">*</font>
             </div>
             <div class="card-body {{ $errors->has('type') ? ' has-error' : '' }} has-feedback">
-                {!! Form::select('type', ['vacina' => 'Vacina', 'banho' => 'Banho', 'cirurgia' => 'Cirurgia'], null, ['class' => 'form-control', 'placeholder' => 'Selecione o Tipo', 'required']) !!}
+                {!! Form::select('type', ['Vacina' => 'Vacina', 'Banho' => 'Banho', 'Cirurgia' => 'Cirurgia'], null, ['class' => 'form-control', 'placeholder' => 'Selecione o Tipo', 'required']) !!}
 
 
                 @if ($errors->has('type'))

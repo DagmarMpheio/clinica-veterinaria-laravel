@@ -45,7 +45,7 @@ class OrderController extends AdminController
         $order->status = 'Aprovado';
         $order->save();
 
-        //Enviar email com os dados so agendamento
+         //Enviar email com os dados do pedido
         Mail::to(Auth::user()->email)->send(new AlertOrderEmail($order));
 
         return redirect('/list-orders')->with('success', 'Pedido aprovado com sucesso.');
@@ -58,7 +58,7 @@ class OrderController extends AdminController
         $order->status = 'Rejeitado';
         $order->save();
 
-        //Enviar email com os dados so agendamento
+        //Enviar email com os dados do pedido
         Mail::to(Auth::user()->email)->send(new AlertOrderEmail($order));
 
         return redirect('/list-orders')->with('success', 'Pedido rejeitado com sucesso.');

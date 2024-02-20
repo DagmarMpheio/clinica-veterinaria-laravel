@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cival SA - Agendamento</title>
+    <title>VetCarePro - Estado do Pedido</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -119,7 +119,7 @@
             <div class="card">
                 <div class="{{$order->status=='Rejeitado'?'card-header-danger':'card-header-success'}}">Detalhes do Pedido</div>
                 <div class="card-body">
-                    <p>Caro {{ $order->user->name }}, a seu pedido foi {{ $order->status }}.</p>
+                    <p>Caro(a) {{ $order->user->name }}, a seu pedido foi {{ $order->status }}.</p>
                     <p>Pedido Nº: {{ $order->created_at->timestamp }}</p>
                     <p>Cliente: {{ $order->user->name }}</p>
                     <p>Data: {{ $order->created_at->format('d/m/Y H:i:s') }}</p>
