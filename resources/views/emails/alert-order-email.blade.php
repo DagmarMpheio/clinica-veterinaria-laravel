@@ -95,14 +95,6 @@
             margin-bottom: 8px;
         }
 
-        .card-body-danger{
-            color: #f52c2c;
-        }
-
-        .card-body-success{
-            color: #4CAF50;
-        }
-
         .product-list {
             list-style: none;
             padding: 0;
@@ -126,7 +118,7 @@
         <div class="content">
             <div class="card">
                 <div class="{{$order->status=='Rejeitado'?'card-header-danger':'card-header-success'}}">Detalhes do Pedido</div>
-                <div class="{{$order->status=='Rejeitado'?'card-body-danger':'card-body-success'}}" >
+                <div class="card-body">
                     <p>Caro {{ $order->user->name }}, a seu pedido foi {{ $order->status }}.</p>
                     <p>Pedido Nº: {{ $order->created_at->timestamp }}</p>
                     <p>Cliente: {{ $order->user->name }}</p>
