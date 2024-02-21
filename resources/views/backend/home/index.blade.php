@@ -5,11 +5,18 @@ Dashboard
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h2 class="mb-0">
+                        {{ __('Bem-vindo(a) ao Dashboard') }}
+                        @auth
+                            {{ Auth::user()->name }}!
+                        @endauth
+                    </h2>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,7 +25,27 @@ Dashboard
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <p class="lead">
+                        {{ __('Você está autenticado!') }}
+                    </p>
+
+                    @auth
+                        <p class="lead">
+                            @php
+                                $hour = date('H');
+                                $greeting = '';
+
+                                if ($hour >= 5 && $hour < 12) {
+                                    $greeting = __('Bom dia');
+                                } elseif ($hour >= 12 && $hour < 18) {
+                                    $greeting = __('Boa tarde');
+                                } else {
+                                    $greeting = __('Boa noite');
+                                }
+                            @endphp
+                            {{ $greeting }}, aproveite sua visita!
+                        </p>
+                    @endauth
                 </div>
             </div>
         </div>
