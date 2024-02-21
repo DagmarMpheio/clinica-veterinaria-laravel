@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\feedback;
 use Illuminate\Http\Request;
 
-class FeedbackController extends AdminController
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,7 +42,7 @@ class FeedbackController extends AdminController
         $feedback = Feedback::create($request->all());
 
         //return dd($request->role);
-        return redirect()->back()->with("success", "Mensagem enviada!");
+        return redirect('inicio')->with("success", "Mensagem enviada!");
     }
 
     /**

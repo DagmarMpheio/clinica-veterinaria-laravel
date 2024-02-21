@@ -14,7 +14,7 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-7">
-                    <form method="POST" action="{{ route('backend.feedbacks.store') }}">
+                    <form method="POST" action="{{ route('new-feedback') }}">
                         @csrf
                         <div class="row g-3">
                             <div class="col-12">

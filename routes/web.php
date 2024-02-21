@@ -72,6 +72,8 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.','middleware' =>['role:ad
     Route::resource('feedbacks', App\Http\Controllers\Backend\FeedbackController::class);
 });
 
+Route::post('new-feedback', [App\Http\Controllers\ContactController::class,'store'])->name('new-feedback');
+
 //Rotas do Carrinho
 Route::get('/shopping-cart', [App\Http\Controllers\CartController::class, 'productCart'])->name('shopping.cart');
 Route::get('/product/{id}', [App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addproduct.to.cart');
