@@ -69,7 +69,7 @@
     <div class="container">
         <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
             <h6 class="text-primary text-uppercase">Membros da Equipa</h6>
-            <h1 class="display-5 text-uppercase mb-0">Qualified Pets Care Professionals</h1>
+            <h1 class="display-5 text-uppercase mb-0">Profissionais qualificados para cuidar de animais</h1>
         </div>
         <div class="owl-carousel team-carousel position-relative" style="padding-right: 25px;">
             <div class="team-item">

@@ -103,7 +103,7 @@
                     <div>
                         <h5 class="text-uppercase mb-3">Embarque de Aminais de Estimação</h5>
                         <p>Embarque seguro e confortável para seus animais de estimação</p>
-                        <a class="text-primary text-uppercase" href="#">Ler Mais<i class="bi bi-chevron-right"></i></a>
+                        <a class="text-primary text-uppercase" href="{{route('services')}}">Ler Mais<i class="bi bi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                     <div>
                         <h5 class="text-uppercase mb-3">Alimentação de Animais</h5>
                         <p>Fornecemos a alimentação ideal para o bem-estar completo dos seus animais de estimação</p>
-                        <a class="text-primary text-uppercase" href="#">Ler Mais<i class="bi bi-chevron-right"></i></a>
+                        <a class="text-primary text-uppercase" href="{{route('services')}}">Ler Mais<i class="bi bi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                     <div>
                         <h5 class="text-uppercase mb-3">Tosquia de Animais</h5>
                         <p>Transformamos a tosquia de animais em momentos de cuidado e conforto</p>
-                        <a class="text-primary text-uppercase" href="#">Ler Mais<i class="bi bi-chevron-right"></i></a>
+                        <a class="text-primary text-uppercase" href="{{route('services')}}">Ler Mais<i class="bi bi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                     <div>
                         <h5 class="text-uppercase mb-3">Treino de Animais</h5>
                         <p>Oferecemos treino dedicado para fortalecer a relação entre você e seu animal de estimação</p>
-                        <a class="text-primary text-uppercase" href="#">Ler Mais<i class="bi bi-chevron-right"></i></a>
+                        <a class="text-primary text-uppercase" href="{{route('services')}}">Ler Mais<i class="bi bi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                     <div>
                         <h5 class="text-uppercase mb-3">Exercício Para Animais</h5>
                         <p>Promovemos a saúde e alegria dos seus animais por meio de programas de exercícios personalizados</p>
-                        <a class="text-primary text-uppercase" href="#">Ler Mais<i class="bi bi-chevron-right"></i></a>
+                        <a class="text-primary text-uppercase" href="{{route('services')}}">Ler Mais<i class="bi bi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                     <div>
                         <h5 class="text-uppercase mb-3">Tratamento de Animais</h5>
                         <p>Comprometidos com o tratamento amoroso e especializado para a saúde e felicidade dos seus animais de estimação</p>
-                        <a class="text-primary text-uppercase" href="#">Ler Mais<i class="bi bi-chevron-right"></i></a>
+                        <a class="text-primary text-uppercase" href="{{route('services')}}">Ler Mais<i class="bi bi-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -199,8 +199,8 @@
                     <h1 class="display-5 text-uppercase text-white mb-0">Poupe 50% em todos os artigos na sua primeira encomenda</h1>
                 </div>
                 <p class="text-white mb-4">Economize 50% em todos os artigos na sua primeira encomenda. Aproveite essa oferta especial para cuidar do seu animal de estimação com qualidade e economia!</p>
-                <a href="#" class="btn btn-light py-md-3 px-md-5 me-3">Comprar Agora</a>
-                <a href="#" class="btn btn-outline-light py-md-3 px-md-5">Ler Mais</a>
+                <a href="{{route('products')}}" class="btn btn-light py-md-3 px-md-5 me-3">Comprar Agora</a>
+                <a href="{{route('products')}}" class="btn btn-outline-light py-md-3 px-md-5">Ler Mais</a>
             </div>
         </div>
     </div>
@@ -213,7 +213,7 @@
     <div class="container">
         <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
             <h6 class="text-primary text-uppercase">Membros da Equipa</h6>
-            <h1 class="display-5 text-uppercase mb-0">Qualified Pets Care Professionals</h1>
+            <h1 class="display-5 text-uppercase mb-0">Profissionais qualificados para cuidar de animais</h1>
         </div>
         <div class="owl-carousel team-carousel position-relative" style="padding-right: 25px;">
             <div class="team-item">
