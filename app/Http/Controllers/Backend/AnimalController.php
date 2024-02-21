@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Animal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -22,8 +23,15 @@ class AnimalController extends AdminController
      */
     public function index()
     {
-        $animals = Animal::orderBy('name')->simplePaginate(5);
-        $animalsCount = Animal::count();
+        //mostrar os animais de acordo com nivel de accesso
+        if (Auth::user()->hasRole('admin')) {
+            $animals = Animal::orderBy('name')->simplePaginate(5);
+            $animalsCount = Animal::count();
+        } else {
+
+            $animals = Animal::where('owner_id', auth()->user()->id)->orderBy('name')->simplePaginate(5);
+            $animalsCount = Animal::where('owner_id', auth()->user()->id)->count();
+        }
 
         return view('backend.animals.index', compact('animals', 'animalsCount'));
     }

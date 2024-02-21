@@ -39,7 +39,9 @@
                                 <th>Tipo</th>
                                 <th>Data/Hora</th>
                                 <th>Animal</th>
-                                <th>Usuário</th>
+                                @if (Auth::user()->hasRole('admin'))
+                                    <th>Cliente</th>
+                                @endif
                                 <th colspan="2">Acção</th>
                             </tr>
                         </thead>
@@ -52,10 +54,12 @@
                                     <td>{{ $counter++ }}</td>
                                     <td>{{ $appointment->type }}</td>
                                     <td>
-                                        {{ $appointment->date }} {{ $appointment->time}}
+                                        {{ $appointment->date }} {{ $appointment->time }}
                                     </td>
                                     <td>{{ $appointment->animal->name }}</td>
-                                    <td>{{ $appointment->user->name }}</td>
+                                    @if (Auth::user()->hasRole('admin'))
+                                        <td>{{ $appointment->user->name }}</td>
+                                    @endif
                                     {{--  <td>
                                         <a href="{{ route('backend.appointments.edit', $appointment) }}"
                                             class="btn btn-primary-green" title="Editar">

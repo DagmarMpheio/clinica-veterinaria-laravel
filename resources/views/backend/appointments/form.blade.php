@@ -16,7 +16,11 @@
                 <font color="red">*</font>
             </div>
             <div class="card-body {{ $errors->has('type') ? ' has-error' : '' }} has-feedback">
-                {!! Form::select('type', ['Vacina' => 'Vacina', 'Banho' => 'Banho', 'Cirurgia' => 'Cirurgia'], null, ['class' => 'form-control', 'placeholder' => 'Selecione o Tipo', 'required']) !!}
+                {!! Form::select('type', ['Vacina' => 'Vacina', 'Banho' => 'Banho', 'Cirurgia' => 'Cirurgia'], null, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Selecione o Tipo',
+                    'required',
+                ]) !!}
 
 
                 @if ($errors->has('type'))
@@ -31,7 +35,19 @@
                 <font color="red">*</font>
             </div>
             <div class="card-body {{ $errors->has('animal_id') ? ' has-error' : '' }} has-feedback">
-                {!! Form::select('animal_id', \App\Models\Animal::pluck('name','id'), null, ['class' => 'form-control', 'placeholder' => 'Selecione o Animal', 'required']) !!}
+                @if (Auth::user()->hasRole('admin'))
+                    {!! Form::select('animal_id', \App\Models\Animal::pluck('name', 'id'), null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Selecione o Animal',
+                        'required',
+                    ]) !!}
+                @else
+                    {!! Form::select('animal_id', Auth::user()->animals->pluck('name', 'id'), null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Selecione o Animal',
+                        'required',
+                    ]) !!}
+                @endif
 
                 @if ($errors->has('animal_id'))
                     <span class="help-block">
@@ -40,20 +56,27 @@
                 @endif
             </div>
 
+            @if (Auth::user()->hasRole('admin'))
+                <div class="card-header">
+                    {!! Form::label('user_id', 'Usuário', ['class' => 'card-title mb-0', 'for' => 'user_id']) !!}
+                    <font color="red">*</font>
+                </div>
+                <div class="card-body {{ $errors->has('user_id') ? ' has-error' : '' }} has-feedback">
+                    {!! Form::select('user_id', \App\Models\User::pluck('name', 'id'), null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Selecione Usuário',
+                        'required',
+                    ]) !!}
 
-            <div class="card-header">
-                {!! Form::label('user_id', 'Usuário', ['class' => 'card-title mb-0', 'for' => 'user_id']) !!}
-                <font color="red">*</font>
-            </div>
-            <div class="card-body {{ $errors->has('user_id') ? ' has-error' : '' }} has-feedback">
-                {!! Form::select('user_id', \App\Models\User::pluck('name','id'), null, ['class' => 'form-control', 'placeholder' => 'Selecione Usuário', 'required']) !!}
-
-                @if ($errors->has('user_id'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('user_id') }}</strong>
-                    </span>
-                @endif
-            </div>
+                    @if ($errors->has('user_id'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('user_id') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            @else
+                <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+            @endif
 
         </div>
 
@@ -64,7 +87,8 @@
 
             <div class="card-body {{ $errors->has('time') ? ' has-error' : '' }} has-feedback">
                 <div class="input-group date" id="timepicker" data-target-input="nearest">
-                    <input type="text" name="time" class="form-control datetimepicker-input" data-target="#timepicker"/>
+                    <input type="text" name="time" class="form-control datetimepicker-input"
+                        data-target="#timepicker" />
                     <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="align-middle" data-feather="clock"></i></div>
                     </div>
@@ -75,7 +99,7 @@
                     </span>
                 @endif
             </div>
-            
+
         </div>
 
     </div>
@@ -96,7 +120,7 @@
                 @endif
             </div>
 
-        </div> 
+        </div>
 
         <button class="btn btn-primary-green" type="submit"><i class="align-middle" data-feather="save"></i>
             <span class="align-middle">Guardar</span></button>

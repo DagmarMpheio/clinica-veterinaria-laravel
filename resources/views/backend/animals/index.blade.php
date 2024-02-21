@@ -3,13 +3,13 @@
 @section('title', 'Animais')
 
 @section('style')
-<style>
-    .animal-image{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    }
-</style>
+    <style>
+        .animal-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -37,7 +37,9 @@
                                 <th>Nome</th>
                                 <th class="d-none d-xl-table-cell">Espécie</th>
                                 <th class="d-none d-xl-table-cell">Raça</th>
-                                <th>Proprietário</th>
+                                @if (Auth::user()->hasRole('admin'))
+                                    <th>Proprietário</th>
+                                @endif
                                 <th colspan="2">Acções</th>
                             </tr>
                         </thead>
@@ -48,14 +50,17 @@
                             @foreach ($animals as $animal)
                                 <tr>
                                     <td>{{ $counter++ }}</td>
-                                    <td><img src="/img/animals/{{$animal->image}}" alt="{{$animal->name}}" class="animal-image"></td>
+                                    <td><img src="/img/animals/{{ $animal->image }}" alt="{{ $animal->name }}"
+                                            class="animal-image"></td>
                                     <td>{{ $animal->name }}</td>
-                                    <td class="d-none d-xl-table-cell">{{$animal->specie}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ $animal->specie }}</td>
                                     <td class="d-none d-xl-table-cell">{{ $animal->race }}</td>
-                                    <td class="d-none d-xl-table-cell">{{ $animal->owner->name }}</td>
+                                    @if (Auth::user()->hasRole('admin'))
+                                        <td class="d-none d-xl-table-cell">{{ $animal->owner->name }}</td>
+                                    @endif
                                     <td>
-                                        <a href="{{ route('backend.animals.edit', $animal) }}"
-                                            class="btn btn-primary-green" title="Editar">
+                                        <a href="{{ route('backend.animals.edit', $animal) }}" class="btn btn-primary-green"
+                                            title="Editar">
                                             <i class="align-middle" data-feather="edit"></i> <span
                                                 class="align-middle">Editar</span>
                                         </a>
@@ -63,17 +68,16 @@
 
                                     <td>
                                         {!! Form::model($animal, [
-                                                'method' => 'DELETE',
-                                                'route' => ['backend.animals.destroy', $animal->id],
+                                            'method' => 'DELETE',
+                                            'route' => ['backend.animals.destroy', $animal->id],
                                         ]) !!}
-                                            <button title="Excluír"
-                                                type="submit" class="btn btn-dark text-white">
-                                                <i class="align-middle" data-feather="trash"></i> 
-                                                <span class="align-middle">Excluir</span>
-                                            </button>
-                                            
+                                        <button title="Excluír" type="submit" class="btn btn-dark text-white">
+                                            <i class="align-middle" data-feather="trash"></i>
+                                            <span class="align-middle">Excluir</span>
+                                        </button>
+
                                         {!! Form::close() !!}
-                            
+
                                     </td>
 
                                 </tr>
@@ -82,7 +86,7 @@
                         </tbody>
                     </table>
                     <div class="mx-4 mt-2">
-                        <p>Total: <b>{{$animalsCount}} {{$animalsCount == 1 ? 'animal' : 'animais'}} </b></p>
+                        <p>Total: <b>{{ $animalsCount }} {{ $animalsCount == 1 ? 'animal' : 'animais' }} </b></p>
                     </div>
                     <!-- Mostrar links de paginacao -->
                     <div class="p-4">

@@ -52,7 +52,7 @@
     <div class="container-fluid p-0">
 
         @include('backend.partials.message')
-        
+
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Todos Pedidos</h1>
         </div>
@@ -74,7 +74,10 @@
                                 <th>Produtos</th>
                                 <th>Status</th>
                                 <th>Comprovantivo</th>
-                                <th colspan="2">Acções</th>
+                                @if (Auth::user()->hasRole('admin'))
+                                    <th>Cliente</th>
+                                    <th colspan="2">Acções</th>
+                                @endif
                             </tr>
                         </thead>
                         @php
@@ -116,24 +119,27 @@
                                                 class="align-middle">Baixar</span>
                                         </a>
                                     </td>
-                                    <td>
-                                        @if ($order->status == 'Pendente')
-                                            <!-- Botão de Aprovação -->
-                                            <form action="{{ route('backend.orders.approve', $order) }}" method="post"
-                                                style="display: inline;">
-                                                @csrf
-                                                <button type="submit" class="btn btn-success mb-2" title="Aprovar"><i
-                                                        class="align-middle" data-feather="check"></i></button>
-                                            </form>
-                                            <!-- Botão de Aprovação -->
-                                            <form action="{{ route('backend.orders.reject', $order) }}" method="post"
-                                                style="display: inline;">
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger" title="Rejeitar"><i
-                                                        class="align-middle" data-feather="x"></i></button>
-                                            </form>
-                                        @endif
-                                    </td>
+                                    @if (Auth::user()->hasRole('admin'))
+                                        <td>{{ $order->user->name }}</td>
+                                        <td>
+                                            @if ($order->status == 'Pendente')
+                                                <!-- Botão de Aprovação -->
+                                                <form action="{{ route('backend.orders.approve', $order) }}" method="post"
+                                                    style="display: inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success mb-2" title="Aprovar"><i
+                                                            class="align-middle" data-feather="check"></i></button>
+                                                </form>
+                                                <!-- Botão de Aprovação -->
+                                                <form action="{{ route('backend.orders.reject', $order) }}" method="post"
+                                                    style="display: inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger" title="Rejeitar"><i
+                                                            class="align-middle" data-feather="x"></i></button>
+                                                </form>
+                                            @endif
+                                        </td>
+                                    @endif
                                 </tr>
                                 @php $counter++; @endphp
                             @endforeach

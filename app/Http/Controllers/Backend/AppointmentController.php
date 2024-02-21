@@ -12,8 +12,13 @@ class AppointmentController extends AdminController
 {
     public function index()
     {
-        $appointments = Appointment::simplePaginate(5);
-        $appointmentsCount = Appointment::count();
+        if (Auth::user()->hasRole('admin')) {
+            $appointments = Appointment::simplePaginate(5);
+            $appointmentsCount = Appointment::count();
+        } else {
+            $appointments = Appointment::where('user_id', auth()->user()->id)->simplePaginate(5);
+            $appointmentsCount = Appointment::where('user_id', auth()->user()->id)->count();
+        }
 
         return view('backend.appointments.index', compact('appointments', 'appointmentsCount'));
     }

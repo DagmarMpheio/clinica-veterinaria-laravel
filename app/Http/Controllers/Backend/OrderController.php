@@ -16,8 +16,13 @@ class OrderController extends AdminController
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at')->simplePaginate(5);
-        $ordersCount = Order::count();
+        if (Auth::user()->hasRole('admin')) {
+            $orders = Order::orderBy('created_at')->simplePaginate(5);
+            $ordersCount = Order::count();
+        } else {
+            $orders = Order::where('user_id', auth()->user()->id)->orderBy('created_at')->simplePaginate(5);
+            $ordersCount = Order::where('user_id', auth()->user()->id)->count();
+        }
 
         return view('backend.orders.index', compact('orders', 'ordersCount'));
     }
@@ -45,7 +50,7 @@ class OrderController extends AdminController
         $order->status = 'Aprovado';
         $order->save();
 
-         //Enviar email com os dados do pedido
+        //Enviar email com os dados do pedido
         Mail::to(Auth::user()->email)->send(new AlertOrderEmail($order));
 
         return redirect('/list-orders')->with('success', 'Pedido aprovado com sucesso.');

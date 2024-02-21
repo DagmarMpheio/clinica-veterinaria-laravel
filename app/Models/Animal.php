@@ -34,7 +34,7 @@ class Animal extends Model
         $imageUrl = "";
 
         if (!is_null($this->image)) {
-            $directory = 'img/products';
+            $directory = 'img/animals';
             $imagePath = public_path() . "/{$directory}/" . $this->image;
             if (file_exists($imagePath))
                 $imageUrl = asset("{$directory}/" . $this->image);
