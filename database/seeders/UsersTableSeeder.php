@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $user2 = new User();
         $user2->id = '99ab64a1-c42b-4949-a9dd-cd7a1a3ce1a6';
         $user2->name = 'Velma Doe';
-        $user2->email = 'janedoe@test.com';
+        $user2->email = 'velmadoe@test.com';
         $user2->phone = $faker->phoneNumber();
         $user2->password = bcrypt('secret00');
         $user2->bio = $faker->text(rand(250, 300));

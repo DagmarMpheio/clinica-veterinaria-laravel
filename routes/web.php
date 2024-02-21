@@ -44,14 +44,14 @@ Route::get('/dashboard', [App\Http\Controllers\Backend\HomeController::class, 'i
 Route::get('/perfil', [App\Http\Controllers\Backend\HomeController::class, 'show'])->name('perfil');
 
 //grupo de rotas -> users
-Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+Route::group(['prefix' => 'backend', 'as' => 'backend.','middleware' =>['role:admin']], function () {
     Route::resource('users', App\Http\Controllers\Backend\UserController::class);
     //rota para o metodo confirm
     Route::get('users/confirm/{users}', [App\Http\Controllers\Backend\UserController::class, 'confirm'])->name('users.confirm');
 });
 
 //grupo de rotas -> products
-Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+Route::group(['prefix' => 'backend', 'as' => 'backend.','middleware' =>['role:admin']], function () {
     Route::resource('products', App\Http\Controllers\Backend\ProductController::class);
 });
 
@@ -68,7 +68,7 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
 
 
 //grupo de rotas -> feedbacks
-Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
+Route::group(['prefix' => 'backend', 'as' => 'backend.','middleware' =>['role:admin']], function () {
     Route::resource('feedbacks', App\Http\Controllers\Backend\FeedbackController::class);
 });
 

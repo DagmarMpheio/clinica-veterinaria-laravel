@@ -15,17 +15,21 @@
                 </a>
             </li>
             
-            <li class="sidebar-item {{ request()->route()->getName() == 'backend.users.index' ||request()->route()->getName() == 'backend.users.edit' ||request()->route()->getName() == 'backend.users.create'? 'active-green': '' }}">
-                <a class="sidebar-link" href="{{ route('backend.users.index') }}">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Usuários</span>
-                </a>
-            </li>
+            @if (check_user_permissions(request(), 'Users@index'))
+                <li class="sidebar-item {{ request()->route()->getName() == 'backend.users.index' ||request()->route()->getName() == 'backend.users.edit' ||request()->route()->getName() == 'backend.users.create'? 'active-green': '' }}">
+                    <a class="sidebar-link" href="{{ route('backend.users.index') }}">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Usuários</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="sidebar-item {{ request()->route()->getName() == 'backend.products.index' ||request()->route()->getName() == 'backend.products.edit' ||request()->route()->getName() == 'backend.products.create'? 'active-green': '' }}">
-                <a class="sidebar-link" href="{{ route('backend.products.index') }}">
-                    <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Produtos</span>
-                </a>
-            </li>
+            @if (check_user_permissions(request(), 'Produtos@index'))
+                <li class="sidebar-item {{ request()->route()->getName() == 'backend.products.index' ||request()->route()->getName() == 'backend.products.edit' ||request()->route()->getName() == 'backend.products.create'? 'active-green': '' }}">
+                    <a class="sidebar-link" href="{{ route('backend.products.index') }}">
+                        <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Produtos</span>
+                    </a>
+                </li>
+            @endif
 
 
             <li class="sidebar-item {{ request()->route()->getName() == 'backend.animals.index' ||request()->route()->getName() == 'backend.animals.edit' ||request()->route()->getName() == 'backend.animals.create'? 'active-green': '' }}">
@@ -46,11 +50,13 @@
                 </a>
             </li>
 
-            <li class="sidebar-item {{ request()->route()->getName() == 'backend.feedbacks.index'||request()->route()->getName() == 'backend.feedbacks.edit' ||request()->route()->getName() == 'backend.feedbacks.create' ? 'active-green': '' }}">
-                <a class="sidebar-link" href="{{ route('backend.feedbacks.index') }}">
-                    <i class="align-middle" data-feather="alert-circle"></i> <span class="align-middle">Feedbacks</span>
-                </a>
-            </li>
+            @if (check_user_permissions(request(), 'Feedback@index'))
+                <li class="sidebar-item {{ request()->route()->getName() == 'backend.feedbacks.index'||request()->route()->getName() == 'backend.feedbacks.edit' ||request()->route()->getName() == 'backend.feedbacks.create' ? 'active-green': '' }}">
+                    <a class="sidebar-link" href="{{ route('backend.feedbacks.index') }}">
+                        <i class="align-middle" data-feather="alert-circle"></i> <span class="align-middle">Feedbacks</span>
+                    </a>
+                </li>
+            @endif
             
 
             <li class="sidebar-header">
