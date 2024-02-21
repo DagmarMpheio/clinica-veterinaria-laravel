@@ -9,7 +9,7 @@
     <meta content="VetCarePro" name="description">
 
     <!-- Favicon -->
-    <link href="img/app-logo.png" rel="icon">
+    <link href="/img/app-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,15 +27,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <!--Toast-->
-    <link rel="stylesheet" href="toastr/toastr.min.css">
+    <link rel="stylesheet" href="/toastr/toastr.min.css">
 
     @yield('style')
 </head>
@@ -242,13 +242,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!--Toast-->
-    <script src="toastr/toastr.min.js"></script>
-    <script src="toastr/toastr-lima.js"></script>
+    <script src="/toastr/toastr.min.js"></script>
+    <script src="/toastr/toastr-lima.js"></script>
 
     @if (session('success'))
         <script>
@@ -261,7 +261,7 @@
     @endif
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 
     @yield('scripts')
 </body>

@@ -29,6 +29,7 @@ Route::get('/services', function () {
 
 /* Pagina Produtos */
 Route::get('/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
+Route::get('/show-product/{product}', [App\Http\Controllers\HomeController::class, 'showProduct'])->name('show-product');
 
 /* Pagina Contacte-nos */
 Route::get('/contact-us', function () {

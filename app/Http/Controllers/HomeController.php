@@ -15,12 +15,20 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::latest()->orderBy('name')->take(5)->get();
-        return view('welcome',compact('products'));
+        return view('welcome', compact('products'));
     }
 
     public function products()
     {
         $products = Product::latest()->orderBy('name')->take(5)->get();
-        return view('products',compact('products'));
+        return view('products', compact('products'));
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function showProduct(Product $product)
+    {
+        return view('show-product', compact('product'));
     }
 }
