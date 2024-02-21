@@ -9,7 +9,7 @@ Dashboard
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
-                <div class="card-header bg-success text-white">
+                <div class="card-header bg-green text-white">
                     <h2 class="mb-0">
                         {{ __('Bem-vindo(a) ao Dashboard') }}
                         @auth
