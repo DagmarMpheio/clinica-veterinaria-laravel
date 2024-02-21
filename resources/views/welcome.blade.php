@@ -12,7 +12,7 @@
                 <h1 class="text-uppercase text-white mb-lg-4">Faça os seus animais de estimação felizes</h1>
                 <p class="fs-4 text-white mb-lg-4">Proporcione alegria aos seus animais de estimação conosco, onde cuidado e felicidade se encontram</p>
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                    <a href="" class="btn btn-outline-light border-2 py-md-3 px-md-5 me-5">Ver Mais</a>
+                    <a href="{{route('backend.appointments.index')}}" class="btn btn-outline-light border-2 py-md-3 px-md-5 me-5">Agendar Agora</a>
                     <button type="button" class="btn-play" data-bs-toggle="modal"
                         data-src="https://www.youtube.com/watch?v=tLpsDamWdIM" data-bs-target="#videoModal">
                         <span></span>
